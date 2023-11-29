@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://nlficlrrvvoq"]
+
+[ext_resource type="Script" path="res://player/Protag.gd" id="1_rkyih"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_dmtwh"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ao3mp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1j48q"]
+size = Vector2(444, 98)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1viy4"]
+radius = 23.0
+height = 68.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gse3u"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Main" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Main"]
+modulate = Color(0.301961, 0.301961, 0.301961, 1)
+offset_right = 1150.0
+offset_bottom = 650.0
+texture = SubResource("CanvasTexture_dmtwh")
+
+[node name="Wall Container" type="Node2D" parent="Main"]
+
+[node name="TextureRect" type="TextureRect" parent="Main/Wall Container"]
+offset_right = 437.0
+offset_bottom = 93.0
+texture = SubResource("CanvasTexture_ao3mp")
+
+[node name="TextureRect2" type="TextureRect" parent="Main/Wall Container"]
+offset_left = 714.0
+offset_top = 2.0
+offset_right = 1151.0
+offset_bottom = 95.0
+texture = SubResource("CanvasTexture_ao3mp")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Main/Wall Container"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main/Wall Container/StaticBody2D"]
+position = Vector2(216, 47)
+shape = SubResource("RectangleShape2D_1j48q")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Main/Wall Container"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main/Wall Container/StaticBody2D2"]
+position = Vector2(933, 47)
+shape = SubResource("RectangleShape2D_1j48q")
+
+[node name="Sanity" type="Node2D" parent="."]
+
+[node name="Player Container" type="Node2D" parent="."]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Player Container"]
+script = ExtResource("1_rkyih")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player Container/CharacterBody2D"]
+position = Vector2(600, 370)
+shape = SubResource("CapsuleShape2D_1viy4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player Container/CharacterBody2D"]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="Player Container/CharacterBody2D"]
+offset_left = 583.0
+offset_top = 345.0
+offset_right = 617.0
+offset_bottom = 395.0
+texture = SubResource("CanvasTexture_gse3u")
+
+[node name="Enemy Container" type="Node2D" parent="."]
