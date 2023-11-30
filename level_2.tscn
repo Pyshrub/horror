@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://deq04q8h1j4e4"]
+
+[ext_resource type="Texture2D" uid="uid://d4eqhts3r4e8o" path="res://Assets/Hallway.png" id="1_k2eq0"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Hallway" type="Sprite2D" parent="."]
+position = Vector2(576.75, 325.5)
+scale = Vector2(0.545, 0.431333)
+texture = ExtResource("1_k2eq0")
+
+[node name="Hallway2" type="Sprite2D" parent="."]
+position = Vector2(1714, 328.609)
+scale = Vector2(0.536094, 0.430145)
+texture = ExtResource("1_k2eq0")
+
+[node name="Hallway3" type="Sprite2D" parent="."]
+position = Vector2(2857, 325)
+scale = Vector2(0.545, 0.431333)
+texture = ExtResource("1_k2eq0")
