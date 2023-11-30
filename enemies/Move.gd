@@ -17,15 +17,6 @@ func physics_process(_delta):
 	else: enemy.velocity.y = 0
 
 
-		
-
-
-func _on_area_2d_area_entered(area):
-	SM.set_state("Attack")
-	place = area.get_collider()
-	place.die()
-
-
 func _on_area_2d_body_entered(body):
 	SM.set_state("Attack")
 	body.die()
