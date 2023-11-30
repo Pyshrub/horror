@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://yq4us1g2layu"]
+
+[ext_resource type="Script" path="res://Control.gd" id="1_jxblu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yqwj4"]
+font_size = 50
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lhlgm"]
+font_size = 35
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jxblu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1148.0
+offset_bottom = 643.0
+color = Color(0.180392, 0.137255, 0.137255, 1)
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0.780392, 1, 1, 1)
+layout_mode = 0
+offset_left = 365.0
+offset_top = 59.0
+offset_right = 810.0
+offset_bottom = 186.0
+text = "In:Sanity"
+label_settings = SubResource("LabelSettings_yqwj4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+modulate = Color(0.780392, 1, 1, 1)
+offset_left = 218.0
+offset_top = 144.0
+offset_right = 979.0
+offset_bottom = 221.0
+text = "A Simple Horror game by: A bunch of weirdos
+"
+label_settings = SubResource("LabelSettings_lhlgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 531.0
+offset_top = 358.0
+offset_right = 650.0
+offset_bottom = 413.0
+text = "NEW GAME"
+icon_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

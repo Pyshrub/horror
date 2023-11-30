@@ -27,6 +27,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("interact") and door == true:
 		if Global.found_flash == true and sane == false:
 			print("you open the door and leave")
+		elif sane == true:
+			print("what are you looking for?")
 		else:
 			print("you can't seem to see the handle")
 	get_input()
