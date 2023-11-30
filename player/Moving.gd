@@ -11,7 +11,7 @@ func start():
 func physics_process(_delta):
 	var direction = Input.get_axis("left", "right")
 	player.set_direction(direction)
-	if direction and Global.end == false:
+	if direction:
 		player.velocity.x = player.direction * player.SPEED
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, player.SPEED)

@@ -1,10 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://nlficlrrvvoq"]
+[gd_scene load_steps=26 format=3 uid="uid://nlficlrrvvoq"]
 
 [ext_resource type="Script" path="res://levels/level_1.gd" id="1_ak2su"]
 [ext_resource type="Texture2D" uid="uid://b7kulvoviw6p2" path="res://Assets/Bedroom.png" id="1_mf0nq"]
 [ext_resource type="PackedScene" uid="uid://d182f8oo60ql8" path="res://player/protag.tscn" id="2_g5o8a"]
 [ext_resource type="Texture2D" uid="uid://c764lfnw8a6bo" path="res://Assets/Mindscape(2).png" id="3_i2jic"]
-[ext_resource type="Script" path="res://levels/Enemy Container.gd" id="4_gj5oe"]
 [ext_resource type="Texture2D" uid="uid://cqc2pn467d7m6" path="res://Assets/Door.png" id="5_52hmy"]
 [ext_resource type="AudioStream" uid="uid://bf87pl5nhw2r" path="res://Assets/Deep Screech1.wav" id="6_1pavo"]
 [ext_resource type="AudioStream" uid="uid://jmkajqa6shf7" path="res://Assets/Deep Screech2.wav" id="7_idbuq"]
@@ -111,7 +110,6 @@ texture = ExtResource("3_i2jic")
 expand_mode = 1
 
 [node name="Enemy Container" type="Node2D" parent="."]
-script = ExtResource("4_gj5oe")
 
 [node name="Interact_Container" type="Node2D" parent="."]
 

@@ -12,7 +12,7 @@ func start():
 	player.set_flash("show")
 
 func physics_process(_delta):
-	if Input.is_action_just_released("flash") and Global.end == false:
+	if Input.is_action_just_released("flash"):
 		SM.set_state("Idle")
 		player.set_flash("hide")
 		
