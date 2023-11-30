@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 @onready var SM = $StateMachine
 
-@export var walking = 500
-@export var running = 500
+@export var walking = 220
+@export var running = 220
 var direction = 1
 var type = "demon"
 func _ready():

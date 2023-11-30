@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvdo6jwb2hye7"]
+[gd_scene load_steps=6 format=3 uid="uid://boey1ke3msg75"]
 
 [ext_resource type="Texture2D" uid="uid://b7kulvoviw6p2" path="res://Assets/Bedroom.png" id="1_65ja5"]
 [ext_resource type="Script" path="res://levels/End_Scene.gd" id="1_altd8"]
 [ext_resource type="PackedScene" uid="uid://d182f8oo60ql8" path="res://player/protag.tscn" id="2_pmpnd"]
 [ext_resource type="PackedScene" uid="uid://1fi4aji7jswu" path="res://enemies/reality_demon.tscn" id="4_nsk0c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oh6ir"]
+size = Vector2(1146, 20)
 
 [node name="End" type="Node2D"]
 script = ExtResource("1_altd8")
@@ -17,7 +20,13 @@ texture = ExtResource("1_65ja5")
 [node name="Player_Container" type="Node2D" parent="."]
 
 [node name="CharacterBody2D" parent="Player_Container" instance=ExtResource("2_pmpnd")]
-position = Vector2(-51, 192)
+position = Vector2(-45, 171)
 
 [node name="Reality Demon" parent="." instance=ExtResource("4_nsk0c")]
 position = Vector2(1056, 537)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(593, 653)
+shape = SubResource("RectangleShape2D_oh6ir")
