@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://boey1ke3msg75"]
+[gd_scene load_steps=45 format=3 uid="uid://boey1ke3msg75"]
 
 [ext_resource type="Texture2D" uid="uid://b7kulvoviw6p2" path="res://Assets/Bedroom.png" id="1_65ja5"]
 [ext_resource type="Script" path="res://levels/End_Scene.gd" id="1_altd8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://enemies/Move.gd" id="7_cd7pl"]
 [ext_resource type="Script" path="res://enemies/Attack.gd" id="8_8p2ir"]
 [ext_resource type="Texture2D" uid="uid://drwr07hwe1qk0" path="res://Assets/Mind_Enemy(2).png" id="9_3xkvc"]
+[ext_resource type="AudioStream" uid="uid://bdpuqawkajcd" path="res://Assets/Deep Screech6.wav" id="10_gnos2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pf6dp"]
 atlas = ExtResource("5_reopf")
@@ -318,6 +319,10 @@ sprite_frames = SubResource("SpriteFrames_4ngac")
 position = Vector2(593, 653)
 shape = SubResource("RectangleShape2D_oh6ir")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_gnos2")
+autoplay = true
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
@@ -329,3 +334,4 @@ autostart = true
 [connection signal="area_entered" from="Reality Demon/Area2D" to="Reality Demon/StateMachine/Move" method="_on_area_2d_area_entered" flags=18]
 [connection signal="body_entered" from="Reality Demon/Area2D" to="Reality Demon/StateMachine/Move" method="_on_area_2d_body_entered" flags=18]
 [connection signal="body_entered" from="Reality Demon/Area2D" to="Reality Demon/StateMachine/Attack" method="_on_area_2d_body_entered" flags=18]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
