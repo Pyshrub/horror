@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://d182f8oo60ql8"]
+[gd_scene load_steps=30 format=3 uid="uid://d182f8oo60ql8"]
 
 [ext_resource type="Script" path="res://player/Protag.gd" id="1_ygcti"]
 [ext_resource type="Texture2D" uid="uid://cmqe1hkaxenog" path="res://Assets/Player_SpritesheetUpdate.png" id="2_pxsng"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://player/Idle.gd" id="4_50lrv"]
 [ext_resource type="Script" path="res://player/Moving.gd" id="5_uj5d6"]
 [ext_resource type="Script" path="res://player/Flash.gd" id="6_f03ph"]
+[ext_resource type="Script" path="res://player/death.gd" id="7_n7jl1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1viy4"]
 radius = 23.0
@@ -133,7 +134,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ibnmt")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -174,7 +175,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="protag" type="CharacterBody2D"]
+collision_layer = 9
+collision_mask = 9
 script = ExtResource("1_ygcti")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -184,7 +187,7 @@ shape = SubResource("CapsuleShape2D_1viy4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(601, 350)
 sprite_frames = SubResource("SpriteFrames_7lj8l")
-animation = &"flash"
+animation = &"death"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(600, 370)
@@ -201,6 +204,9 @@ script = ExtResource("5_uj5d6")
 
 [node name="Flash" type="Node" parent="StateMachine"]
 script = ExtResource("6_f03ph")
+
+[node name="death" type="Node" parent="StateMachine"]
+script = ExtResource("7_n7jl1")
 
 [node name="flash_container" type="Node2D" parent="."]
 visible = false

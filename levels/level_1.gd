@@ -32,6 +32,7 @@ func _process(delta):
 			dialogue3.position = Vector2(589,184)
 			add_child(dialogue3)
 			print("you found a flashlight")
+			$"Enemy Container".spawn_enemy()
 	if Input.is_action_just_pressed("interact") and door == true:
 		if Global.found_flash == true and sane == false:
 			print("you open the door and leave")

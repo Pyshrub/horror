@@ -6,7 +6,7 @@ const JUMP_VELOCITY = -400.0
 var direction = -1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
+@onready var SM = $StateMachine
 
 func _physics_process(delta):
 	if direction < 0 and not $AnimatedSprite2D.flip_h: 
@@ -34,3 +34,7 @@ func set_flash(type):
 		$flash_container.show()
 	elif type == "hide":
 		$flash_container.hide()
+
+func die():
+	SM.set_state("death")
+
