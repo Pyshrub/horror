@@ -44,4 +44,5 @@ func die():
 
 
 func _on_timer_timeout():
-	pass # Replace with function body.
+	if Global.end == true:
+		SM.set_state("death")
