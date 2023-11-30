@@ -14,7 +14,7 @@ The dialogue boxes didn't implement into the game as smoothly as expected, also 
 
 ## Implementation
 Features: inner dialogue, music & sounds, reality-switching feature, multiple levels, raycasting, enemy attacks, manner of stopping enemies without fighting them directly, different objectives in different levels<br>
-Software used: Godot, Adobe Photoshop<br>
+Software used: Godot, Adobe Photoshop, F I Studio<br>
 Font used: Scary Feet
 
 ## References
