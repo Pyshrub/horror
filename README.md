@@ -13,7 +13,7 @@ Movement is WASD, interaction is E, medicine is P, flashlight is F, dialogue pro
 The dialogue boxes didn't implement into the game as smoothly as expected, also Skye left his usb stick at Franklin
 
 ## Implementation
-Features: inner dialogue, music & sounds, reality-switching feature, multiple levels, raycasting, enemy attacks, manner of stopping enemies without fighting them directly, different objectives in different levels<br>
+Features: inner dialogue, music & sounds, reality-switching feature, multiple levels, raycasting, enemy attacks, manner of stopping enemies without fighting them directly, different objectives in different levels, on-theme death animation<br>
 Software used: Godot, Adobe Photoshop, F I Studio<br>
 Font used: Scary Feet
 
