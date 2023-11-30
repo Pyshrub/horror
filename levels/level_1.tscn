@@ -1,75 +1,107 @@
-[gd_scene load_steps=7 format=3 uid="uid://nlficlrrvvoq"]
+[gd_scene load_steps=11 format=3 uid="uid://nlficlrrvvoq"]
 
-[ext_resource type="Script" path="res://player/Protag.gd" id="1_rkyih"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_dmtwh"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_ao3mp"]
+[ext_resource type="Script" path="res://levels/level_1.gd" id="1_ak2su"]
+[ext_resource type="Texture2D" uid="uid://b7kulvoviw6p2" path="res://Assets/Bedroom.png" id="1_mf0nq"]
+[ext_resource type="PackedScene" uid="uid://d182f8oo60ql8" path="res://player/protag.tscn" id="2_g5o8a"]
+[ext_resource type="Texture2D" uid="uid://c764lfnw8a6bo" path="res://Assets/Mindscape(2).png" id="3_i2jic"]
+[ext_resource type="Texture2D" uid="uid://cqc2pn467d7m6" path="res://Assets/Door.png" id="5_52hmy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1j48q"]
-size = Vector2(444, 98)
+size = Vector2(444, 831)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1viy4"]
-radius = 23.0
-height = 68.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46mbp"]
+size = Vector2(1149.63, 12)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_gse3u"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4pqc"]
+size = Vector2(229, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8btw8"]
+size = Vector2(107.25, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hfbl0"]
+size = Vector2(118, 244)
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_ak2su")
 
 [node name="Main" type="Node2D" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="Main"]
 modulate = Color(0.301961, 0.301961, 0.301961, 1)
-offset_right = 1150.0
-offset_bottom = 650.0
-texture = SubResource("CanvasTexture_dmtwh")
-
-[node name="Wall Container" type="Node2D" parent="Main"]
-
-[node name="TextureRect" type="TextureRect" parent="Main/Wall Container"]
-offset_right = 437.0
-offset_bottom = 93.0
-texture = SubResource("CanvasTexture_ao3mp")
-
-[node name="TextureRect2" type="TextureRect" parent="Main/Wall Container"]
-offset_left = 714.0
+offset_left = 1.0
 offset_top = 2.0
 offset_right = 1151.0
-offset_bottom = 95.0
-texture = SubResource("CanvasTexture_ao3mp")
+offset_bottom = 652.0
+texture = ExtResource("1_mf0nq")
+expand_mode = 1
+
+[node name="Wall Container" type="Node2D" parent="Main"]
+position = Vector2(165, -735)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Main/Wall Container"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Main/Wall Container/StaticBody2D"]
-position = Vector2(216, 47)
+position = Vector2(-392, 1127)
 shape = SubResource("RectangleShape2D_1j48q")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Main/Wall Container"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Main/Wall Container/StaticBody2D2"]
-position = Vector2(933, 47)
+position = Vector2(1213, 1142)
 shape = SubResource("RectangleShape2D_1j48q")
+
+[node name="back_wall" type="StaticBody2D" parent="Main/Wall Container"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main/Wall Container/back_wall"]
+position = Vector2(411.188, 1387)
+shape = SubResource("RectangleShape2D_46mbp")
 
 [node name="Sanity" type="Node2D" parent="."]
 
-[node name="Player Container" type="Node2D" parent="."]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Player Container"]
-script = ExtResource("1_rkyih")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player Container/CharacterBody2D"]
-position = Vector2(600, 370)
-shape = SubResource("CapsuleShape2D_1viy4")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player Container/CharacterBody2D"]
-visible = false
-
-[node name="TextureRect" type="TextureRect" parent="Player Container/CharacterBody2D"]
-offset_left = 583.0
-offset_top = 345.0
-offset_right = 617.0
-offset_bottom = 395.0
-texture = SubResource("CanvasTexture_gse3u")
+[node name="TextureRect" type="TextureRect" parent="Sanity"]
+modulate = Color(0.301961, 0.301961, 0.301961, 1)
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 1151.0
+offset_bottom = 652.0
+texture = ExtResource("3_i2jic")
+expand_mode = 1
 
 [node name="Enemy Container" type="Node2D" parent="."]
+
+[node name="Interact_Container" type="Node2D" parent="."]
+
+[node name="Bed" type="Area2D" parent="Interact_Container"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact_Container/Bed"]
+position = Vector2(150.5, 595.5)
+shape = SubResource("RectangleShape2D_y4pqc")
+
+[node name="Flash_box" type="Area2D" parent="Interact_Container"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact_Container/Flash_box"]
+position = Vector2(1044, 624)
+shape = SubResource("RectangleShape2D_8btw8")
+
+[node name="Door" type="Area2D" parent="Interact_Container"]
+
+[node name="Door" type="Sprite2D" parent="Interact_Container/Door"]
+position = Vector2(552, 504)
+texture = ExtResource("5_52hmy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact_Container/Door"]
+position = Vector2(579, 532)
+shape = SubResource("RectangleShape2D_hfbl0")
+
+[node name="Player Container" type="Node2D" parent="."]
+
+[node name="CharacterBody2D" parent="Player Container" instance=ExtResource("2_g5o8a")]
+position = Vector2(-260, 172)
+
+[connection signal="body_entered" from="Interact_Container/Bed" to="." method="_on_bed_body_entered"]
+[connection signal="body_exited" from="Interact_Container/Bed" to="." method="_on_bed_body_exited"]
+[connection signal="body_entered" from="Interact_Container/Flash_box" to="." method="_on_flash_box_body_entered"]
+[connection signal="body_exited" from="Interact_Container/Flash_box" to="." method="_on_flash_box_body_exited"]
+[connection signal="body_entered" from="Interact_Container/Door" to="." method="_on_door_body_entered"]
+[connection signal="body_exited" from="Interact_Container/Door" to="." method="_on_door_body_exited"]
