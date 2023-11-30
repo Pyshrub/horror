@@ -1,20 +1,77 @@
-[gd_scene load_steps=2 format=3 uid="uid://deq04q8h1j4e4"]
+[gd_scene load_steps=8 format=3 uid="uid://deq04q8h1j4e4"]
 
+[ext_resource type="Script" path="res://level_2.gd" id="1_0rjp2"]
 [ext_resource type="Texture2D" uid="uid://d4eqhts3r4e8o" path="res://Assets/Hallway.png" id="1_k2eq0"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="2_xn30u"]
+[ext_resource type="Texture2D" uid="uid://c764lfnw8a6bo" path="res://Assets/Mindscape(2).png" id="3_htdr7"]
+[ext_resource type="PackedScene" uid="uid://d182f8oo60ql8" path="res://player/protag.tscn" id="5_h57mv"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stno7"]
+size = Vector2(685.6, 0.600006)
 
-[node name="Hallway" type="Sprite2D" parent="."]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2s6we"]
+size = Vector2(20, 336)
+
+[node name="level2" type="Node2D"]
+script = ExtResource("1_0rjp2")
+
+[node name="Main2" type="Node2D" parent="."]
+
+[node name="Hallway" type="Sprite2D" parent="Main2"]
 position = Vector2(576.75, 325.5)
 scale = Vector2(0.545, 0.431333)
 texture = ExtResource("1_k2eq0")
 
-[node name="Hallway2" type="Sprite2D" parent="."]
+[node name="Hallway2" type="Sprite2D" parent="Main2"]
 position = Vector2(1714, 328.609)
 scale = Vector2(0.536094, 0.430145)
 texture = ExtResource("1_k2eq0")
 
-[node name="Hallway3" type="Sprite2D" parent="."]
+[node name="Hallway3" type="Sprite2D" parent="Main2"]
 position = Vector2(2857, 325)
 scale = Vector2(0.545, 0.431333)
 texture = ExtResource("1_k2eq0")
+
+[node name="Sanity2" type="Node2D" parent="."]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="Sanity2"]
+offset_right = 2100.0
+offset_bottom = 1500.0
+scale = Vector2(0.55, 0.43)
+texture = ExtResource("3_htdr7")
+expand_mode = 1
+
+[node name="Collision Bodys" type="Node2D" parent="."]
+
+[node name="Floor" type="StaticBody2D" parent="Collision Bodys"]
+position = Vector2(0, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision Bodys/Floor"]
+position = Vector2(1714, 0.5)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_stno7")
+
+[node name="Wall1" type="StaticBody2D" parent="Collision Bodys"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision Bodys/Wall1"]
+position = Vector2(-16, 322)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_2s6we")
+
+[node name="Wall2" type="StaticBody2D" parent="Collision Bodys"]
+position = Vector2(3465, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision Bodys/Wall2"]
+position = Vector2(-16, 322)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_2s6we")
+
+[node name="player_container" type="Node2D" parent="."]
+
+[node name="Player" parent="player_container" instance=ExtResource("5_h57mv")]
+position = Vector2(-260, 172)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(575, 325)
+script = ExtResource("2_xn30u")
