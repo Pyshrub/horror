@@ -18,7 +18,8 @@ Software used: Godot, Adobe Photoshop, F I Studio<br>
 Font used: Scary Feet
 
 ## References
-The Persistence of Memory by Salvador Dalí referenced in bedroom level
+The Persistence of Memory by Salvador Dalí referenced in bedroom level<br>
+Reality switching inspired by Fran Bow
 
 ## Future Development
 Publication
