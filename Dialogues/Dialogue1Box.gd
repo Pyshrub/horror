@@ -1,9 +1,9 @@
 extends Control
 
 var dialogue = [
-	'Where am I????',
+	'WHAT IS THIS PLACE????',
 	'Ugh..need to find my pills. Pretty sure I had them when sleeping',
-	'(Use E to interact, P to use pills, and F for Flashlight)'
+	'(Use E to interact)'
 ]
 
 var dialogue_index = 0
