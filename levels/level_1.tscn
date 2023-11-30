@@ -1,10 +1,21 @@
-[gd_scene load_steps=11 format=3 uid="uid://nlficlrrvvoq"]
+[gd_scene load_steps=24 format=3 uid="uid://nlficlrrvvoq"]
 
 [ext_resource type="Script" path="res://levels/level_1.gd" id="1_ak2su"]
 [ext_resource type="Texture2D" uid="uid://b7kulvoviw6p2" path="res://Assets/Bedroom.png" id="1_mf0nq"]
 [ext_resource type="PackedScene" uid="uid://d182f8oo60ql8" path="res://player/protag.tscn" id="2_g5o8a"]
 [ext_resource type="Texture2D" uid="uid://c764lfnw8a6bo" path="res://Assets/Mindscape(2).png" id="3_i2jic"]
 [ext_resource type="Texture2D" uid="uid://cqc2pn467d7m6" path="res://Assets/Door.png" id="5_52hmy"]
+[ext_resource type="AudioStream" uid="uid://bf87pl5nhw2r" path="res://Assets/Deep Screech1.wav" id="6_1pavo"]
+[ext_resource type="AudioStream" uid="uid://jmkajqa6shf7" path="res://Assets/Deep Screech2.wav" id="7_idbuq"]
+[ext_resource type="AudioStream" uid="uid://ss5je4gjrkly" path="res://Assets/Deep Screech3.wav" id="8_ppctr"]
+[ext_resource type="AudioStream" uid="uid://b0u4ywpcim0pf" path="res://Assets/Deep Screech4.wav" id="9_2ouua"]
+[ext_resource type="AudioStream" uid="uid://xidsud8k5w8s" path="res://Assets/deep screech5.wav" id="10_ju8u4"]
+[ext_resource type="AudioStream" uid="uid://bdpuqawkajcd" path="res://Assets/Deep Screech6.wav" id="11_1672o"]
+[ext_resource type="AudioStream" uid="uid://dyv2ydxkfwudy" path="res://Assets/whisper2.wav" id="12_iljao"]
+[ext_resource type="AudioStream" uid="uid://c6qmheh3evgma" path="res://Assets/whisper1.wav" id="13_n30jr"]
+[ext_resource type="AudioStream" uid="uid://eh6bj13fal7m" path="res://Assets/whisper3.wav" id="14_4c1hh"]
+[ext_resource type="AudioStream" uid="uid://bdh6mikexjnsu" path="res://Assets/whisper4.wav" id="15_a7njo"]
+[ext_resource type="AudioStream" uid="uid://bx23i30u1qnj4" path="res://Assets/whisper sp1.wav" id="16_jjbws"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1j48q"]
 size = Vector2(444, 831)
@@ -20,6 +31,35 @@ size = Vector2(107.25, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfbl0"]
 size = Vector2(118, 244)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_x6xho"]
+streams_count = 6
+playback_mode = 1
+stream_0/stream = ExtResource("6_1pavo")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_idbuq")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("8_ppctr")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("9_2ouua")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("10_ju8u4")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("11_1672o")
+stream_5/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sata7"]
+streams_count = 5
+stream_0/stream = ExtResource("12_iljao")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("13_n30jr")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("14_4c1hh")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("15_a7njo")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("16_jjbws")
+stream_4/weight = 1.0
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ak2su")
@@ -98,6 +138,15 @@ shape = SubResource("RectangleShape2D_hfbl0")
 
 [node name="CharacterBody2D" parent="Player Container" instance=ExtResource("2_g5o8a")]
 position = Vector2(-260, 172)
+
+[node name="Random_Mind (WIP)" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_x6xho")
+autoplay = true
+panning_strength = 1.81
+
+[node name="Random_RealWorld (WIP)" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_sata7")
+panning_strength = 1.85
 
 [connection signal="body_entered" from="Interact_Container/Bed" to="." method="_on_bed_body_entered"]
 [connection signal="body_exited" from="Interact_Container/Bed" to="." method="_on_bed_body_exited"]

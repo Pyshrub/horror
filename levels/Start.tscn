@@ -27,6 +27,7 @@ script = ExtResource("1_jxblu")
 layout_mode = 0
 offset_right = 1148.0
 offset_bottom = 643.0
+scale = Vector2(1.01, 1.01)
 color = Color(0.180392, 0.137255, 0.137255, 1)
 
 [node name="Label" type="Label" parent="."]
