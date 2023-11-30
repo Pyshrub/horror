@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvdo6jwb2hye7"]
+
+[ext_resource type="Texture2D" uid="uid://b7kulvoviw6p2" path="res://Assets/Bedroom.png" id="1_65ja5"]
+[ext_resource type="PackedScene" uid="uid://d182f8oo60ql8" path="res://player/protag.tscn" id="2_pmpnd"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 2100.0
+offset_bottom = 1500.0
+scale = Vector2(0.549456, 0.431589)
+texture = ExtResource("1_65ja5")
+
+[node name="Player_Container" type="Node2D" parent="."]
+
+[node name="CharacterBody2D" parent="Player_Container" instance=ExtResource("2_pmpnd")]
+position = Vector2(-51, 192)
