@@ -1,7 +1,7 @@
 extends Control
 
 var dialogue = [
-	'Where am I????',
+	'WHAT IS THIS PLACE????',
 	'Ugh..need to find my pills. Pretty sure I had them when sleeping',
 	'(Use E to interact)'
 ]
