@@ -42,6 +42,7 @@ offset_right = 892.0
 offset_bottom = 148.0
 theme_override_fonts/font = ExtResource("3_ne4ne")
 theme_override_font_sizes/font_size = 37
-text = "Oh! A Flashlight!"
+text = "Oh! I found some pills!
+(Use P to take pills)"
 horizontal_alignment = 1
 vertical_alignment = 1

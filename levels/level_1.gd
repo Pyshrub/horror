@@ -18,11 +18,19 @@ func _process(delta):
 	if Input.is_action_just_pressed("interact") and in_bed == true:
 		if sane == false and found_pills == false:
 			found_pills = true
+			var Dialogue2 = load("res://Dialogues/Dialogue2.tscn")
+			var dialogue2 = Dialogue2.instantiate()
+			dialogue2.position = Vector2(589,184)
+			add_child(dialogue2)
 		else:
-			print("it's a bed")
+			print("pills have already been found")
 	if Input.is_action_just_pressed("interact") and boxing == true:
 		if sane == true:
 			Global.found_flash = true
+			var Dialogue3 = load("res://Dialogues/Dialogue3.tscn")
+			var dialogue3 = Dialogue3.instantiate()
+			dialogue3.position = Vector2(589,184)
+			add_child(dialogue3)
 			print("you found a flashlight")
 	if Input.is_action_just_pressed("interact") and door == true:
 		if Global.found_flash == true and sane == false:
