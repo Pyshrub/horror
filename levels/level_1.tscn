@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://nlficlrrvvoq"]
+[gd_scene load_steps=27 format=3 uid="uid://nlficlrrvvoq"]
 
 [ext_resource type="Script" path="res://levels/level_1.gd" id="1_ak2su"]
 [ext_resource type="Texture2D" uid="uid://b7kulvoviw6p2" path="res://Assets/Bedroom.png" id="1_mf0nq"]
 [ext_resource type="PackedScene" uid="uid://d182f8oo60ql8" path="res://player/protag.tscn" id="2_g5o8a"]
 [ext_resource type="Texture2D" uid="uid://c764lfnw8a6bo" path="res://Assets/Mindscape(2).png" id="3_i2jic"]
+[ext_resource type="Script" path="res://levels/Enemy Container.gd" id="4_gj5oe"]
 [ext_resource type="Texture2D" uid="uid://cqc2pn467d7m6" path="res://Assets/Door.png" id="5_52hmy"]
 [ext_resource type="AudioStream" uid="uid://bf87pl5nhw2r" path="res://Assets/Deep Screech1.wav" id="6_1pavo"]
 [ext_resource type="AudioStream" uid="uid://jmkajqa6shf7" path="res://Assets/Deep Screech2.wav" id="7_idbuq"]
@@ -18,12 +19,6 @@
 [ext_resource type="AudioStream" uid="uid://bx23i30u1qnj4" path="res://Assets/whisper sp1.wav" id="16_jjbws"]
 [ext_resource type="PackedScene" uid="uid://8y6ayy4h0n7y" path="res://Dialogues/Dialogue1.tscn" id="17_irw08"]
 [ext_resource type="Texture2D" uid="uid://c5glokijwkurv" path="res://Assets/BedSprite.png" id="18_3032m"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1j48q"]
-size = Vector2(444, 831)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_46mbp"]
-size = Vector2(1149.63, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4pqc"]
 size = Vector2(229, 71)
@@ -63,6 +58,12 @@ stream_3/weight = 1.0
 stream_4/stream = ExtResource("16_jjbws")
 stream_4/weight = 1.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1j48q"]
+size = Vector2(444, 831)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46mbp"]
+size = Vector2(1149.63, 12)
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ak2su")
 
@@ -77,27 +78,6 @@ offset_bottom = 652.0
 texture = ExtResource("1_mf0nq")
 expand_mode = 1
 
-[node name="Wall Container" type="Node2D" parent="Main"]
-position = Vector2(165, -735)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Main/Wall Container"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Main/Wall Container/StaticBody2D"]
-position = Vector2(-392, 1127)
-shape = SubResource("RectangleShape2D_1j48q")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="Main/Wall Container"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Main/Wall Container/StaticBody2D2"]
-position = Vector2(1213, 1142)
-shape = SubResource("RectangleShape2D_1j48q")
-
-[node name="back_wall" type="StaticBody2D" parent="Main/Wall Container"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Main/Wall Container/back_wall"]
-position = Vector2(411.188, 1387)
-shape = SubResource("RectangleShape2D_46mbp")
-
 [node name="Sanity" type="Node2D" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="Sanity"]
@@ -110,6 +90,7 @@ texture = ExtResource("3_i2jic")
 expand_mode = 1
 
 [node name="Enemy Container" type="Node2D" parent="."]
+script = ExtResource("4_gj5oe")
 
 [node name="Interact_Container" type="Node2D" parent="."]
 
@@ -160,6 +141,27 @@ offset_bottom = 184.0
 position = Vector2(173, 592)
 scale = Vector2(0.663972, 0.426573)
 texture = ExtResource("18_3032m")
+
+[node name="Wall Container" type="Node2D" parent="."]
+position = Vector2(165, -735)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall Container"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Container/StaticBody2D"]
+position = Vector2(-392, 1127)
+shape = SubResource("RectangleShape2D_1j48q")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Wall Container"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Container/StaticBody2D2"]
+position = Vector2(1213, 1142)
+shape = SubResource("RectangleShape2D_1j48q")
+
+[node name="back_wall" type="StaticBody2D" parent="Wall Container"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Container/back_wall"]
+position = Vector2(411.188, 1387)
+shape = SubResource("RectangleShape2D_46mbp")
 
 [connection signal="body_entered" from="Interact_Container/Bed" to="." method="_on_bed_body_entered"]
 [connection signal="body_exited" from="Interact_Container/Bed" to="." method="_on_bed_body_exited"]
