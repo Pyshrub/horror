@@ -1,10 +1,9 @@
-extends Node
+extends Node2D
 
-var found_flash = false
-var end = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	Global.end = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

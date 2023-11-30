@@ -38,3 +38,6 @@ func set_flash(type):
 func die():
 	SM.set_state("death")
 
+
+
+
