@@ -13,7 +13,7 @@ func physics_process(_delta):
 	if enemy.should_attack():
 		SM.set_state("attack")
 	if not enemy.is_on_floor():
-		enemy.velocity.y += 50
+		enemy.velocity.y += 0
 	else: enemy.velocity.y = 0
 
 

@@ -1,9 +1,137 @@
-[gd_scene load_steps=6 format=3 uid="uid://boey1ke3msg75"]
+[gd_scene load_steps=28 format=3 uid="uid://boey1ke3msg75"]
 
 [ext_resource type="Texture2D" uid="uid://b7kulvoviw6p2" path="res://Assets/Bedroom.png" id="1_65ja5"]
 [ext_resource type="Script" path="res://levels/End_Scene.gd" id="1_altd8"]
 [ext_resource type="PackedScene" uid="uid://d182f8oo60ql8" path="res://player/protag.tscn" id="2_pmpnd"]
-[ext_resource type="PackedScene" uid="uid://1fi4aji7jswu" path="res://enemies/reality_demon.tscn" id="4_nsk0c"]
+[ext_resource type="Script" path="res://enemies/Reality Demon.gd" id="4_tdvhs"]
+[ext_resource type="Texture2D" uid="uid://lp1pbk3fx6p" path="res://Assets/Enemy-1.png" id="5_reopf"]
+[ext_resource type="Script" path="res://enemies/StateMachine.gd" id="6_u458d"]
+[ext_resource type="Script" path="res://enemies/Move.gd" id="7_cd7pl"]
+[ext_resource type="Script" path="res://enemies/Attack.gd" id="8_8p2ir"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf6dp"]
+atlas = ExtResource("5_reopf")
+region = Rect2(0, 228, 224, 228)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytyke"]
+atlas = ExtResource("5_reopf")
+region = Rect2(224, 228, 224, 228)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngtcu"]
+atlas = ExtResource("5_reopf")
+region = Rect2(448, 228, 224, 228)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbd5o"]
+atlas = ExtResource("5_reopf")
+region = Rect2(672, 228, 224, 228)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2t0l"]
+atlas = ExtResource("5_reopf")
+region = Rect2(0, 456, 224, 228)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l63w7"]
+atlas = ExtResource("5_reopf")
+region = Rect2(224, 456, 224, 228)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbnjj"]
+atlas = ExtResource("5_reopf")
+region = Rect2(448, 456, 224, 228)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tudjj"]
+atlas = ExtResource("5_reopf")
+region = Rect2(672, 456, 224, 228)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1ape"]
+atlas = ExtResource("5_reopf")
+region = Rect2(0, 684, 224, 228)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg2va"]
+atlas = ExtResource("5_reopf")
+region = Rect2(224, 684, 224, 228)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdxjn"]
+atlas = ExtResource("5_reopf")
+region = Rect2(448, 684, 224, 228)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5l1v"]
+atlas = ExtResource("5_reopf")
+region = Rect2(0, 32, 221, 211)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ep7q4"]
+atlas = ExtResource("5_reopf")
+region = Rect2(221, 32, 221, 211)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qssw3"]
+atlas = ExtResource("5_reopf")
+region = Rect2(442, 32, 221, 211)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xeps8"]
+atlas = ExtResource("5_reopf")
+region = Rect2(663, 32, 221, 211)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8iddy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf6dp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytyke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngtcu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbd5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2t0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l63w7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbnjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tudjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1ape")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg2va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdxjn")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5l1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ep7q4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qssw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xeps8")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ucsc"]
+radius = 69.7711
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_06yci"]
+radius = 105.38
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oh6ir"]
 size = Vector2(1146, 20)
@@ -22,11 +150,60 @@ texture = ExtResource("1_65ja5")
 [node name="CharacterBody2D" parent="Player_Container" instance=ExtResource("2_pmpnd")]
 position = Vector2(-45, 171)
 
-[node name="Reality Demon" parent="." instance=ExtResource("4_nsk0c")]
+[node name="Reality Demon" type="CharacterBody2D" parent="."]
 position = Vector2(1056, 537)
+script = ExtResource("4_tdvhs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Reality Demon"]
+sprite_frames = SubResource("SpriteFrames_8iddy")
+animation = &"attack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reality Demon"]
+position = Vector2(-11, 14)
+shape = SubResource("CircleShape2D_2ucsc")
+
+[node name="StateMachine" type="Node" parent="Reality Demon"]
+script = ExtResource("6_u458d")
+
+[node name="Move" type="Node" parent="Reality Demon/StateMachine"]
+script = ExtResource("7_cd7pl")
+
+[node name="Attack" type="Node" parent="Reality Demon/StateMachine"]
+script = ExtResource("8_8p2ir")
+
+[node name="Timer" type="Timer" parent="Reality Demon/StateMachine/Attack"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Attack1" type="RayCast2D" parent="Reality Demon"]
+target_position = Vector2(-211, -2)
+collision_mask = 8
+
+[node name="Attack2" type="RayCast2D" parent="Reality Demon"]
+target_position = Vector2(185, -2)
+collision_mask = 8
+
+[node name="Area2D" type="Area2D" parent="Reality Demon"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reality Demon/Area2D"]
+position = Vector2(-11, 14)
+shape = SubResource("CircleShape2D_06yci")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(593, 653)
 shape = SubResource("RectangleShape2D_oh6ir")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Reality Demon/StateMachine/Attack/Timer" to="Reality Demon" method="_on_timer_timeout" flags=18]
+[connection signal="timeout" from="Reality Demon/StateMachine/Attack/Timer" to="Reality Demon/StateMachine/Attack" method="_on_timer_timeout" flags=18]
+[connection signal="area_entered" from="Reality Demon/Area2D" to="Reality Demon" method="_on_area_2d_area_entered" flags=18]
+[connection signal="area_entered" from="Reality Demon/Area2D" to="Reality Demon/StateMachine/Move" method="_on_area_2d_area_entered" flags=18]
+[connection signal="body_entered" from="Reality Demon/Area2D" to="Reality Demon/StateMachine/Move" method="_on_area_2d_body_entered" flags=18]
+[connection signal="body_entered" from="Reality Demon/Area2D" to="Reality Demon/StateMachine/Attack" method="_on_area_2d_body_entered" flags=18]

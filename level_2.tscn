@@ -1,16 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://deq04q8h1j4e4"]
+[gd_scene load_steps=11 format=3 uid="uid://deq04q8h1j4e4"]
 
 [ext_resource type="Script" path="res://level_2.gd" id="1_0rjp2"]
 [ext_resource type="Texture2D" uid="uid://d4eqhts3r4e8o" path="res://Assets/Hallway.png" id="1_k2eq0"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="2_xn30u"]
 [ext_resource type="Texture2D" uid="uid://c764lfnw8a6bo" path="res://Assets/Mindscape(2).png" id="3_htdr7"]
+[ext_resource type="Texture2D" uid="uid://cqc2pn467d7m6" path="res://Assets/Door.png" id="4_babtc"]
 [ext_resource type="PackedScene" uid="uid://d182f8oo60ql8" path="res://player/protag.tscn" id="5_h57mv"]
+[ext_resource type="Script" path="res://level2/Enemy_Container.gd" id="6_c7bn3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stno7"]
 size = Vector2(685.6, 0.600006)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2s6we"]
 size = Vector2(20, 336)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_284l7"]
+size = Vector2(118, 244)
 
 [node name="level2" type="Node2D"]
 script = ExtResource("1_0rjp2")
@@ -67,11 +72,32 @@ position = Vector2(-16, 322)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_2s6we")
 
+[node name="Door" type="Area2D" parent="Collision Bodys"]
+position = Vector2(2667, -5)
+
+[node name="Door" type="Sprite2D" parent="Collision Bodys/Door"]
+position = Vector2(552, 504)
+texture = ExtResource("4_babtc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision Bodys/Door"]
+position = Vector2(579, 532)
+shape = SubResource("RectangleShape2D_284l7")
+
 [node name="player_container" type="Node2D" parent="."]
 
 [node name="Player" parent="player_container" instance=ExtResource("5_h57mv")]
 position = Vector2(-260, 172)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(575, 325)
+[node name="Camera2D" type="Camera2D" parent="player_container/Player"]
+position = Vector2(835, 153)
 script = ExtResource("2_xn30u")
+
+[node name="Enemy_Container" type="Node2D" parent="."]
+script = ExtResource("6_c7bn3")
+
+[node name="Timer" type="Timer" parent="Enemy_Container"]
+autostart = true
+
+[connection signal="body_entered" from="Collision Bodys/Door" to="." method="_on_door_body_entered"]
+[connection signal="body_exited" from="Collision Bodys/Door" to="." method="_on_door_body_exited"]
+[connection signal="timeout" from="Enemy_Container/Timer" to="Enemy_Container" method="_on_timer_timeout"]

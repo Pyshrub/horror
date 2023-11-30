@@ -16,3 +16,12 @@ func _physics_process(delta):
 			$Main2.show()
 			$Sanity2.hide()
 			sane = true
+	if Input.is_action_just_pressed("interact") and door == true:
+		get_tree().change_scene_to_file("res://levels/End_Scene.tscn")
+
+func _on_door_body_entered(body):
+	door = true
+
+
+func _on_door_body_exited(body):
+	door = false

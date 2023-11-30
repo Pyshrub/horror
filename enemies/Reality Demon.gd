@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 @export var walking = 220
 @export var running = 220
+
 var direction = 1
 var type = "demon"
 func _ready():
@@ -51,11 +52,6 @@ func _on_anima_animation_finished():
 		SM.set_state("Move")
 	if SM.state_name == "Die":
 		queue_free()
-
-
-func _on_area_2d_area_entered(area):
-	print("yo")
-	area.die()
 
 
 func _on_timer_timeout():
