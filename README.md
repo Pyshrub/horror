@@ -25,6 +25,6 @@ Publication
 
 # Created by: Sanity Games
 Camden: coding and puzzle design<br>
-Adil: narrative design and dialogue<br>
+Adil: narrative design and dialogue box coding<br>
 Skye: all visual assets<br>
 Jacob: all audio assets<br>
